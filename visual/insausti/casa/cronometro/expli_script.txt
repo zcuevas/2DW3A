@@ -1,0 +1,198 @@
+--- 1. LÓGICA DEL RELOJ ---ç
+
+function actualizarReloj() {
+  const ahora = new Date();
+  const horas = String(ahora.getHours()).padStart(2, '0');
+  const minutos = String(ahora.getMinutes()).padStart(2, '0');
+  const segundos = String(ahora.getSeconds()).padStart(2, '0');
+  
+  document.getElementById('reloj').textContent = `${horas}:${minutos}:${segundos}`;
+}
+ 
+- function actualizarReloj
+
+ 1. const ahora = new Date();
+ Crea un objeto de tipo Date que captura la fecha y hora exactas del sistema en el momento 
+ exacto en que se ejecuta la función.
+
+ 2. const horas = String(ahora.getHours()).padStart(2, '0'); Esta línea hace tres cosas:
+  - ahora.getHours(): Extrae el número de las horas (de 0 a 23). 
+    Por ejemplo, si son las 9 de la mañana, devuelve el número 9.
+  - String(...): Convierte ese número en texto (ej. de 9 a "9"), ya que los métodos para 
+    manipular cadenas solo funcionan con texto.
+  - .padStart(2, '0'): Asegura que el texto tenga mínimo 2 dígitos. Si tiene solo 1 dígito 
+    (como "9"), le añade un '0' a la izquierda para transformarlo en "09". Si ya tiene 2 dígitos 
+    (como "14"), lo deja igual.
+
+ 5. document.getElementById('reloj').textContent = `${horas}...
+  - document.getElementById('reloj'): Busca en tu documento HTML el elemento que tiene la ID 
+    reloj (<div id="reloj">).
+  - `${horas}:${minutos}:${segundos}`: Usa las template literals (comillas invertidas) para unir 
+    las variables formateadas separadas por dos puntos (ej. "09:05:08").
+    * 
+        // FORMA ANTIGUA (Concatenación clásica)
+        var horaFormateada = horas + ':' + minutos + ':' + segundos;
+
+        // FORMA MODERNA (Template Literals)
+        const horaFormateada = `${horas}:${minutos}:${segundos}`;
+    *
+  - .textContent = ...: Reemplaza el texto visible dentro de ese <div> con la hora recién construida.
+    textContent es una propiedad de JavaScript que sirve para leer o cambiar únicamente el texto 
+    plano dentro de un elemento del HTML, ignorando cualquier etiqueta HTML que haya dentro.
+-
+
+=====================================================================================================
+
+--- 2. LÓGICA DEL CRONÓMETRO ---
+
+--- 2.1. FUNCIONES ---
+
+function formatearTiempo(totalSegundos) {
+  const hrs = String(Math.floor(totalSegundos / 3600)).padStart(2, '0');
+  const mins = String(Math.floor((totalSegundos % 3600) / 60)).padStart(2, '0');
+  const segs = String(totalSegundos % 60).padStart(2, '0');
+  return `${hrs}:${mins}:${segs}`;
+}
+
+- function formatearTiempo(totalSegundos)
+ 1. const hrs = String(Math.floor(totalSegundos / 3600)).padStart(2, '0');
+  - totalSegundos / 3600: Divide los segundos entre 3600 (porque 1 hora = 3600 segundos).
+  - Math.floor(...): Quita los decimales para quedarse solo con las horas enteras.
+  - String(...): Convierte el número a texto.
+  - .padStart(2, '0'): Asegura que tenga 2 dígitos añadiendo un '0' a la izquierda si solo es uno.
+
+ 2. const mins = String(Math.floor((totalSegundos % 3600) / 60)).padStart(2, '0');
+  - totalSegundos % 3600: Divide entre los segundos que tiene una hora. Coge el modulo de la division ya
+    ya que las horas no nos interesan. Se queda con lo que no llega a formar una hora. 
+  - / 60: Divide ese sobrante entre 60 para saber cuántos minutos completos hay.
+  - Math.floor(...): Elimina decimales para dejar los minutos, sin segundos.
+  - String(...).padStart(2, '0'): Le aplica formato de 2 dígitos.
+
+ 3. const segs = String(totalSegundos % 60).padStart(2, '0');
+  - totalSegundos % 60: Extrae el resto final tras quitar todos los minutos completos.
+  - String(...).padStart(2, '0'): Le aplica formato de 2 dígitos.
+
+ 4. return `${hrs}:${mins}:${segs}`;
+ Une las tres variables guardadas usando un template literal separado por dos puntos. 00:00:00
+
+ * totalSegundos es una variable temporal, se crea y se destruye con la funcion. El valor lo
+  lo recive cuando se le llama: totalSegundos(segundosTranscurridos). *
+-
+
+function actualizarDisplayCronometro() {
+  document.getElementById('cronometro').textContent = formatearTiempo(segundosTranscurridos);
+}
+
+- function actualizarDisplayCronometro() 
+ 1. document.getElementById('cronometro').textContent = formatearTiempo(segundosTranscurridos);
+  - segundosTranscurridos: Lee el valor actual de la variable global (por ejemplo, 3665).
+  - formatearTiempo(...): Llama a la función de formateo pasándole ese número como argumento. La 
+    función procesa los 3665 segundos y devuelve el texto estructurado: "01:01:05".
+  - document.getElementById('cronometro'): Busca en el HTML el ID 'cronometro'.
+  - .textContent = ... : Reemplaza el texto dentro de ese elemento con el resultado obtenido.
+-
+
+--- 2.2. BOTONES ---
+
+document.getElementById('btn-arrancar').addEventListener('click', () => {
+  if (idIntervalo === null) {
+    idIntervalo = setInterval(() => {
+      segundosTranscurridos++;
+      actualizarDisplayCronometro();
+    }, 1000);
+  }
+});
+
+- Botón Arrancar
+ 1. document.getElementById('btn-arrancar').addEventListener('click', () => {
+  - document.getElementById('btn-arrancar'): Busca en el HTML el botón con la ID 'btn-arrancar'.
+  - .addEventListener('click', () => { ... }): Escucha los eventos del botón. Cada vez que el 
+    usuario hace un clic en él, ejecuta el código que está dentro de las llaves {}.
+
+ 2. if (idIntervalo === null) {}
+ Comprobación de seguridad (Garantía de pausa/parada): Evalúa si idIntervalo está libre (null).
+ Si el cronómetro ya estaba en marcha, idIntervalo contendrá un número de identificación, por lo 
+ que la condición será falsa y no hará nada. Esto evita el fallo de que al pulsar el botón varias 
+ veces se aceleren los segundos sin control.
+
+ 3. BUCLE idIntervalo = setInterval(() => { ...  }, 1000);
+ Crea un bucle recurrente que ejecuta la función interna cada 1000 milisegundos (1 segundo).
+  - segundosTranscurridos++: En cada segundo, incrementa el valor de la variable en 1.
+  - actualizarDisplayCronometro(): Llama a la función encargada de convertir los nuevos segundos 
+    a formato texto (HH:MM:SS) y pintarlos en el HTML. 
+-
+
+document.getElementById('btn-parar').addEventListener('click', () => {
+  if (idIntervalo !== null) {
+    clearInterval(idIntervalo);
+    idIntervalo = null;
+  }
+});
+
+- Botón Parar
+Si hay algo en idIntervalo lo para y pone idIntervalo como null. (Para el bucle que hace que cada
+1000 milisegunos del sistema se sume un segundo a nuestro cronómetro).
+
+
+document.getElementById('btn-reset').addEventListener('click', () => {
+  if (idIntervalo !== null) {
+    clearInterval(idIntervalo);
+    idIntervalo = null;
+  }
+  segundosTranscurridos = 0;
+  actualizarDisplayCronometro();
+});
+
+- Botón Poner a 0
+Hace lo mismo que el botón parar pero además pone el cronómetro a 0.
+
+
+document.getElementById('btn-registrar').addEventListener('click', () => {
+  if (segundosTranscurridos > 0) {
+    const tiempoActual = formatearTiempo(segundosTranscurridos);
+    const estado = (idIntervalo === null) ? "parado" : "en marcha";
+    
+    const nuevoElemento = document.createElement('li');
+    nuevoElemento.textContent = `Tiempo (${estado}): ${tiempoActual}`;
+    document.getElementById('lista-registros').appendChild(nuevoElemento);
+  } else {
+    alert("El cronómetro está a 0. Arráncalo primero para obtener un tiempo.");
+  }
+}); 
+
+- Botón Escribir valor
+ 1. Si no hay más de 00:00:00 en el cronómetro salta un error sino hace...
+ 2. tiempoActual: Envía el número de segundos a tu función formatearTiempo para obtener el texto 
+    formateado (por ejemplo, "00:01:25").
+ 3. estado (Operador Ternario): Evalúa idIntervalo. Si es null, guarda la palabra "parado"; si no 
+ es null (el temporizador sigue corriendo), guarda "en marcha".
+ 4. document.createElement('li'): Crea un nuevo nodo de elemento de lista (<li>) "en la memoria" 
+ del navegador (aún no es visible en pantalla).
+ 5. nuevoElemento.textContent = ...: Escribe el texto dentro de ese nuevo <li>. Por ejemplo: 
+ "Tiempo (en marcha): 00:01:25".
+ 6. document.getElementById('lista-registros').appendChild(nuevoElemento): Busca el elemento 
+ contenedor <ul id="lista-registros"> o <ol> en el DOM e inserta el nuevo <li> al final de la 
+ lista, haciéndolo visible al instante en la página.
+  * appendChild es un método del DOM que sirve para insertar un elemento hijo al final de otro 
+  elemento padre. *
+-
+
+
+document.getElementById('btn-limpiar').addEventListener('click', () => {
+  const lista = document.getElementById('lista-registros');
+  
+  if (lista.children.length > 0) {
+    lista.innerHTML = ''; // Vacía la lista por completo
+  } else {
+    alert("No hay ningún registro para borrar.");
+  }
+});
+
+- Botón Borrar todos los registros
+ 2. Busca en el DOM el elemento HTML donde se acumulan los registros (por ejemplo, el 
+ <ul id="lista-registros"> u <ol>) y lo guarda en la variable lista.
+ 3. lista.children: Devuelve una colección de todos los elementos hijo inmediatos (todos los <li> 
+    que han sido añadidos a la lista). .length: Cuenta cuántos elementos hijo hay en ese momento.
+ 4.5. si hay childrens los borra sino salta un aviso.
+-
+ 

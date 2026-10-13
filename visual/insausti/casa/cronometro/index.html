@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reloj y Cronómetro</title>
+  <script src="script.js" defer></script> 
+  <!-- comentado <link rel="stylesheet" href="styles.css"> -->
+</head>
+<body>
+
+  <!-- Sección del Reloj -->
+  <section class="card">
+        <h2>Reloj (Hora actual)</h2>
+        <div id="reloj" class="display">00:00:00</div>
+  </section>
+  
+  <!-- Sección del Cronómetro -->
+  <section class="card">
+        <h2>Cronómetro</h2>
+        <div id="cronometro" class="display">00:00:00</div>
+
+        <div class="buttons">
+            <button id="btn-arrancar">Arrancar</button>
+            <button id="btn-parar">Parar</button>
+            <button id="btn-reset">Poner a 0</button>
+            <button id="btn-registrar">Escribir valor</button>
+            <button id="btn-limpiar">Borrar registros</button>
+        </div>
+
+        <h3>Tiempos registrados:</h3>
+        <ul id="lista-registros"></ul>
+  </section>
+
+</body>
+</html>
