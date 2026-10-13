@@ -5,3 +5,8 @@ exactamente dos decimales.
 • Si alguno de los datos no es válido, muestra un mensaje adecuado.
 • Si son válidos, muestra el total con dos decimales.
 */
+
+let precio = parseFloat(prompt("Introduce el precio del producto:"));
+let cantidad = parseInt(prompt("Introduce las unidades:"), 10);
+
+console.log(precio, cantidad);
