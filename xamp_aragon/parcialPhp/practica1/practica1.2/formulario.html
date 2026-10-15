@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Añadir libro</title>
+</head>
+<body>
+
+    <h1>Añadir libro</h1>
+
+    <!-- Formulario apuntando a anadir_libro.php -->
+    <form action="anadir_libro.php" method="post"> 
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo"><br><br>
+
+        <label for="autor">Autor:</label>
+        <input type="text" id="autor" name="autor"><br><br>
+
+        <label for="anyo">Año:</label>
+        <!-- type number para que salga la flechita de subir y bajar -->
+        <input type="number" id="anyo" name="anyo" min="0" max="2100"><br><br>
+
+        <input type="submit" value="Enviar">
+    </form>
+
+    <hr>
+    <a href="index.html">Volver al inicio</a> |
+    <a href="visualizar.php">Ver todos los libros</a>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir serie</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="bilatu">
+            <img src="img/logo.png" alt="Tx_Series logoa">
+
+            <nav>
+                <a href="txantiloia_home.html">Hasiera</a>
+                <a href="bilatu.html">Bilatu</a>
+                <a href="formulario.html">Seriea gehitu</a>
+                <a href="estas.php">Estatistikak</a>
+            </nav>
+        </div>
+    </header>
+   
+    <h1>Añadir serie</h1>
+
+    <!-- Formulario apuntando a anadir.php -->
+    <form action="anadir.php" method="post"> 
+       
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo"><br><br>
+
+        <label for="genero">Genero:</label>
+        <input type="text" id="genero" name="genero"><br><br>
+
+        <label for="temporadas">Temporadas:</label>
+        <!-- type number para que salga la flechita de subir y bajar -->
+        <input type="number" id="temporadas" name="temporadas" min="0" max="2100"><br><br>
+       
+        <label for="valoracion">Valoracion:</label>
+        <!-- type number para que salga la flechita de subir y bajar -->
+        <input type="number" id="valoracion" name="valoracion" min="0" max="10"><br><br>
+
+
+        <input type="submit" value="Enviar">
+    </form>
+
+    <footer>
+        <p>Tx_Series - Web Garapena Zerbitzari Ingurunean</p>
+    </footer>
+
+</body>
+</html>

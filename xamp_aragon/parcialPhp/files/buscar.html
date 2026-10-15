@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Buscar libro</title>
+
+</head>
+
+<body>
+  <h1>Buscar libro</h1>
+    <!--
+         FORMULARIO DE BÚSQUEDA
+         Esta vez utilizamos POST.
+         action="buscar.php"
+         → Los datos serán enviados a buscar.php.
+         method="POST"
+         → Utilizamos $_POST en PHP.
+    -->
+    <form action="buscar.php" method="post">
+        <label>Escribe el título:</label>
+
+        <input type="text" name="buscar">
+        <br><br>
+        <input type="submit" value="Buscar">
+    </form>
+</body>
+
+</html>
