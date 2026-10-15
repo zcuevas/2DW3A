@@ -1,0 +1,61 @@
+* { /* TODOS los elementos del documento */ 
+  box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el ancho y alto total del elemento */
+  /* BOX-SIZING: Controla cómo se calculan el ancho y alto de los elementos */
+  margin: 0; /* Elimina el margen por defecto de todos los elementos */
+  /* MARGIN: Espacio externo entre el borde del elemento y los elementos adyacentes */
+  padding: 0; /* Elimina el padding por defecto de todos los elementos */
+  /* PADDING: Espacio interno entre el borde del elemento y su contenido */
+  font-family: Arial, sans-serif; /* Establece la fuente por defecto para todo el documento */
+  font-weight: bold; /* Pone en negrita todo el documento */
+}
+
+body { 
+  padding: 20px; /* Añade un padding de 20px alrededor del contenido del body */ 
+  /* PADDING: Espacio interno entre el borde del elemento y su contenido */
+  background-color: #f4f4f4;
+}
+
+.container {
+  width: 100%; 
+  /* WIDTH: define el ancho de un elemento */
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+}
+
+header {
+  background-color: #f39c12;
+  color: white;
+  padding: 15px;
+  width: 100%;
+}
+
+.main-content {
+  width: 100%;
+  overflow: hidden; /* Clearfix para contener los elementos flotados */
+}
+
+aside {
+  background-color: #f1c40f;
+  color: white;
+  width: 25%;
+  float: left;
+  padding: 20px;
+  min-height: 200px;
+}
+
+main {
+  background-color: #3498db;
+  color: white;
+  width: 75%;
+  float: left;
+  padding: 20px;
+  min-height: 200px;
+}
+
+footer {
+  background-color: #2ecc71;
+  color: white;
+  padding: 15px;
+  width: 100%;
+  clear: both;
+}

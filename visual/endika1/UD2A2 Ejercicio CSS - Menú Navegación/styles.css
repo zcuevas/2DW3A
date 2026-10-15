@@ -1,0 +1,165 @@
+/* =========================================================
+   1. GUÍA DE ESTILO (Variables CSS y Configuración Global)
+   ========================================================= */
+:root {
+  /* Paleta de Colores */
+  --color-primario: #2563eb;
+  --color-hover: #1d4ed8;
+  --color-secundario: #1e293b;
+  --color-fondo: #f8fafc;
+  --color-blanco: #ffffff;
+  --color-texto: #334155;
+  --color-borde: #e2e8f0;
+
+  /* Tipografía y Espaciado */
+  --fuente-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --margen-base: 1rem;
+  --radio-borde: 8px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--fuente-principal);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.6;
+}
+
+main {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 var(--margen-base);
+}
+
+/* =========================================================
+   2. MENÚ DE NAVEGACIÓN
+   ========================================================= */
+header {
+  background-color: var(--color-secundario);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.logo {
+  color: var(--color-blanco);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Menú en horizontal */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+nav a {
+  color: var(--color-blanco);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radio-borde);
+  transition: background-color 0.3s ease;
+}
+
+/* Pseudo-clase :hover en el menú */
+nav a:hover {
+  background-color: var(--color-hover);
+}
+
+/* Estilo para el elemento activo */
+nav a.active {
+  background-color: var(--color-primario);
+  font-weight: bold;
+}
+
+/* =========================================================
+   3. SECCIÓN GUÍA DE ESTILO (Demostración)
+   ========================================================= */
+.guia-estilo {
+  background-color: var(--color-blanco);
+  padding: 1.5rem;
+  border-radius: var(--radio-borde);
+  margin-bottom: 2rem;
+  border: 1px solid var(--color-borde);
+}
+
+.paleta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.color-box {
+  padding: 0.75rem;
+  border-radius: 4px;
+  color: white;
+  font-size: 0.85rem;
+  flex: 1;
+  text-align: center;
+}
+
+.color-primario { background-color: var(--color-primario); }
+.color-secundario { background-color: var(--color-secundario); }
+.color-fondo { background-color: #cbd5e1; color: var(--color-secundario); }
+
+/* =========================================================
+   4. LISTA DE CONTENIDO (Uso de Selectores Complejos)
+   ========================================================= */
+.contenido {
+  background-color: var(--color-blanco);
+  padding: 1.5rem;
+  border-radius: var(--radio-borde);
+  border: 1px solid var(--color-borde);
+}
+
+.contenido h2 {
+  margin-bottom: 1rem;
+}
+
+.lista-servicios {
+  padding-left: 1.5rem;
+}
+
+/* Pseudo-clases y selectores complejos */
+.lista-servicios li {
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: var(--radio-borde);
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+/* Filas pares (:nth-child(even)) */
+.lista-servicios li:nth-child(even) {
+  background-color: #f1f5f9;
+}
+
+/* Filas impares (:nth-child(odd)) */
+.lista-servicios li:nth-child(odd) {
+  background-color: #ffffff;
+  border: 1px solid var(--color-borde);
+}
+
+/* Primer elemento de la lista (:first-child) */
+.lista-servicios li:first-child {
+  border-left: 5px solid var(--color-primario);
+  font-weight: bold;
+}
+
+/* Último elemento de la lista (:last-child) */
+.lista-servicios li:last-child {
+  margin-bottom: 0;
+}
+
+/* Efecto Hover en los elementos de la lista (:hover) */
+.lista-servicios li:hover {
+  background-color: #e2e8f0;
+  transform: translateX(5px);
+  cursor: pointer;
+}
