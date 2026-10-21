@@ -1,0 +1,4 @@
+x.toUpperCase() --> strtoupper($x)
+x.toLowerCase() --> strtolower($x)
+console.log(x.length) --> mb_strlen($x)
+parseInt(x, 10) --> (int)$x

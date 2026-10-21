@@ -1,0 +1,84 @@
+======================================
+ESTRUCTURAS DE BUCLES EN PHP
+======================================
+
+1. BUCLE WHILE
+--------------
+Evalúa la condición antes de ejecutar el bloque de código. Si la condición es falsa desde el principio, el bloque no se ejecuta ninguna vez.
+
+Sintaxis estándar:
+    while (condicion) {
+        // Código a ejecutar mientras la condición sea verdadera
+    }
+
+Sintaxis alternativa (común en plantillas HTML):
+    while (condicion):
+        // Código a ejecutar
+    endwhile;
+
+
+2. BUCLE DO-WHILE
+-----------------
+Ejecuta el bloque de código al menos una vez antes de evaluar la condición. La condición se comprueba al final de cada iteración.
+
+Sintaxis estándar:
+    do {
+        // Código a ejecutar (se ejecuta al menos una vez)
+    } while (condicion);
+
+
+3. BUCLE FOR
+------------
+Se utiliza cuando se conoce de antemano el número de iteraciones. Agrupa la inicialización del contador, la condición de parada y el incremento/decremento.
+
+Sintaxis estándar:
+    for (inicializacion; condicion; incremento) {
+        // Código a ejecutar en cada iteración
+    }
+
+Sintaxis alternativa:
+    for (inicializacion; condicion; incremento):
+        // Código a ejecutar
+    endfor;
+
+
+4. BUCLE FOREACH
+----------------
+Diseñado exclusivamente para iterar sobre colecciones (arrays y objetos). Adapta automáticamente el paso de elementos sin necesidad de controlar un índice manual.
+
+Iterar solo obteniendo el valor:
+    foreach ($array as $valor) {
+        // Código a ejecutar
+    }
+
+Iterar obteniendo la clave (o índice) y el valor:
+    foreach ($array as $clave => $valor) {
+        // Código a ejecutar
+    }
+
+Iterar por referencia (permite modificar directamente el elemento del array original):
+    foreach ($array as &$valor) {
+        $valor = $valor * 2;
+    }
+    unset($valor); // Buena práctica: eliminar la referencia al finalizar
+
+Sintaxis alternativa:
+    foreach ($array as $clave => $valor):
+        // Código a ejecutar
+    endforeach;
+
+
+======================================
+CONTROL DE FLUJO DENTRO DE LOS BUCLES
+======================================
+
+Todos los bucles en PHP soportan las siguientes sentencias para alterar la ejecución:
+
+- break;
+  Interrumpe y sale inmediatamente del bucle.
+
+- continue;
+  Salta el resto de la iteración actual y pasa a la evaluación de la siguiente.
+
+- break n; / continue n;
+  Permite salir o saltar la iteración de $n$ niveles de bucles anidados (por ejemplo, `break 2;`).

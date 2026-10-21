@@ -14,7 +14,7 @@ if ($num < 20 || $num > 60) {
         60 => "sesenta"
     ];
 
-    if (array_key_exists($num, $decenasEspeciales)) {
+    if (array_key_exists($num, $decenasEspeciales)) { 
         echo $decenasEspeciales[$num];
     } else {
         // Separar decenas y unidades

@@ -1,0 +1,11 @@
+function nombreDeLaFuncion($parametro1, $parametro2) {
+    // 1. Código o lógica a ejecutar
+    $resultado = $parametro1 + $parametro2;
+
+    // 2. Devolver el resultado
+    return $resultado;
+}
+
+// Para usarla (llamarla):
+$salida = nombreDeLaFuncion(10, 5);
+echo $salida; // Imprime: 15
