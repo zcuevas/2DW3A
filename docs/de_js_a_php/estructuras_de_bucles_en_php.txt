@@ -44,29 +44,19 @@ Sintaxis alternativa:
 
 4. BUCLE FOREACH
 ----------------
-Diseñado exclusivamente para iterar sobre colecciones (arrays y objetos). Adapta automáticamente el paso de elementos sin necesidad de controlar un índice manual.
+- Si solo quieres MOSTRAR o USAR el contenido usa la estructura simple:
 
-Iterar solo obteniendo el valor:
-    foreach ($array as $valor) {
-        // Código a ejecutar
-    }
+	 foreach ($array as $valor)
+por cada elemento lo llamamos como $valor
 
-Iterar obteniendo la clave (o índice) y el valor:
-    foreach ($array as $clave => $valor) {
-        // Código a ejecutar
-    }
+Ejemplo: Quieres imprimir todos los nombres de los videojuegos en una lista HTML <li>.
 
-Iterar por referencia (permite modificar directamente el elemento del array original):
-    foreach ($array as &$valor) {
-        $valor = $valor * 2;
-    }
-    unset($valor); // Buena práctica: eliminar la referencia al finalizar
+- Si necesitas SABER EL NÚMERO/CLAVE o COMPARAR posiciones usa la estructura completa:
 
-Sintaxis alternativa:
-    foreach ($array as $clave => $valor):
-        // Código a ejecutar
-    endforeach;
+	 foreach ($array as $clave => $valor)
+por cada elemento con clave x lo llamamos como $valor
 
+Ejemplo: Quieres imprimir un array asociativo y que se vea tanto la clave como el valor.
 
 ======================================
 CONTROL DE FLUJO DENTRO DE LOS BUCLES
