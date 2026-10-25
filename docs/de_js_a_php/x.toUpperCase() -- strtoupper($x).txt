@@ -1,3 +1,5 @@
+JS	    -->		PH
+
 x.toUpperCase() --> strtoupper($x)
 x.toLowerCase() --> strtolower($x)
 
@@ -6,3 +8,17 @@ console.log(x.length) --> mb_strlen($x) / count($x)
 * count()	Contar elementos de una lista
 
 parseInt(x, 10) --> (int)$x
+
+array.splice(inicio, cantidadEliminar, ponerElemento1, ponerElemento2, ...) --> unset($x[indice]);    $x = array_values($x);
+
+
+Objetivo		En PHP 							En JavaScript
+Devuelve primer índice	array_search("x", $x)					x.indexOf("x")
+
+Devuelve todos		array_keys("x", $x)
+
+En multidimensional	$y = array_search("y", array_column($x, "x"));		const y = x.findIndex(w => w.x === "y");
+			$y = array_keys("y", array_column($x, "x"));
+			
+
+
