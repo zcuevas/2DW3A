@@ -9,3 +9,11 @@ function nombreDeLaFuncion($parametro1, $parametro2) {
 // Para usarla (llamarla):
 $salida = nombreDeLaFuncion(10, 5);
 echo $salida; // Imprime: 15
+
+
+
+función felcha
+
+
+// Equivale a: (nombre) => 'Hola ${nombre}';
+const saludar = nombre => 'Hola '+ nombre;
