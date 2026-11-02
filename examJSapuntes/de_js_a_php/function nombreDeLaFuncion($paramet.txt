@@ -11,9 +11,15 @@ $salida = nombreDeLaFuncion(10, 5);
 echo $salida; // Imprime: 15
 
 
+function nombreDeLaFuncion(parametro1, parametro2) {
+  // Código a ejecutar
+  return parametro1 + parametro2; // (Opcional) Devuelve un resultado
+}
 
-función felcha
+// Llamada a la función:
+let resultado = nombreDeLaFuncion(5, 3);
 
 
-// Equivale a: (nombre) => 'Hola ${nombre}';
+función flecha
 const saludar = nombre => 'Hola '+ nombre;
+// Equivale a: (nombre) => 'Hola ${nombre}';

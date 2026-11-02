@@ -1,0 +1,82 @@
+function nombreDeLaFuncion($parametro1, $parametro2) {
+    // 1. Código o lógica a ejecutar
+    $resultado = $parametro1 + $parametro2;
+
+    // 2. Devolver el resultado
+    return $resultado;
+}
+
+// Para usarla (llamarla):
+$salida = nombreDeLaFuncion(10, 5);
+echo $salida; // Imprime: 15
+
+
+function nombreDeLaFuncion(parametro1, parametro2) {
+  // Código a ejecutar
+  return parametro1 + parametro2; // (Opcional) Devuelve un resultado
+}
+
+// Llamada a la función:
+let resultado = nombreDeLaFuncion(5, 3);
+
+
+función flecha
+const saludar = nombre => 'Hola '+ nombre;
+// Equivale a: (nombre) => 'Hola ${nombre}';
+
+
+
+
+
+BUCLE FOREACH
+----------------
+- Si solo quieres MOSTRAR o USAR el contenido usa la estructura simple:
+
+	 foreach ($array as $valor)
+por cada elemento lo llamamos como $valor
+
+Ejemplo: Quieres imprimir todos los nombres de los videojuegos en una lista HTML <li>.
+
+- Si necesitas SABER EL NÚMERO/CLAVE o COMPARAR posiciones usa la estructura completa:
+
+	 foreach ($array as $clave => $valor)
+por cada elemento con clave x lo llamamos como $valor
+
+Ejemplo: Quieres imprimir un array asociativo y que se vea tanto la clave como el valor.
+
+======================================
+CONTROL DE FLUJO DENTRO DE LOS BUCLES
+======================================
+
+Todos los bucles en PHP soportan las siguientes sentencias para alterar la ejecución:
+
+- break;
+  Interrumpe y sale inmediatamente del bucle.
+
+- continue;
+  Salta el resto de la iteración actual y pasa a la evaluación de la siguiente.
+
+- break n; / continue n;
+  Permite salir o saltar la iteración de $n$ niveles de bucles anidados (por ejemplo, `break 2;`).
+
+
+===================================================================================================
+
+let dia = "martes";
+
+switch (dia) {
+  case "lunes":
+    console.log("Inicio de semana");
+    break;
+  case "martes":
+  case "miércoles":
+  case "jueves":
+    console.log("Semana en curso");
+    break;
+  case "viernes":
+    console.log("¡Viernes!");
+    break;
+  default:
+    console.log("Fin de semana");
+}
+

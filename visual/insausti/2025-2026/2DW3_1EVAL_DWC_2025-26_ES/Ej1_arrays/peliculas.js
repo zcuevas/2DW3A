@@ -13,7 +13,7 @@ let peliculas = [
 function mayusculas(lista) {
   return lista.map(function(pelicula) {
     return pelicula.titulo.toUpperCase();
-  });
+  }); 
 }
 
 let resultado = mayusculas(peliculas);
