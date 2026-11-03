@@ -1,0 +1,25 @@
+/* Estilos entregados: el alumnado no necesita modificar CSS. */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; background: #f3f5f8; color: #243247; }
+.contenedor { max-width: 1100px; margin: 0 auto; padding: 20px; }
+header { background: #243447; color: white; padding: 20px; border-radius: 8px; }
+header h1 { margin-top: 0; }
+nav { display: flex; gap: 14px; flex-wrap: wrap; }
+nav a { color: white; text-decoration: none; }
+main { margin-top: 20px; background: white; padding: 24px; border-radius: 8px; min-height: 330px; }
+footer { padding: 18px; text-align: center; color: #666; }
+label { display: block; margin: 12px 0 4px; }
+input, select, button, textarea { padding: 9px; font: inherit; max-width: 100%; }
+input, select { min-width: 200px; }
+button, .boton { display: inline-block; margin: 10px 6px 10px 0; padding: 10px 14px; background: #1769aa; color: white; border: 0; border-radius: 4px; text-decoration: none; cursor: pointer; }
+table { border-collapse: collapse; width: 100%; margin-top: 15px; }
+th, td { padding: 10px; border: 1px solid #d9e0e7; text-align: left; }
+th { background: #e8edf2; }
+.mensaje { padding: 12px; background: #e7f5ec; border: 1px solid #9acbad; }
+.error { padding: 12px; background: #fbe9e9; border: 1px solid #e4aaaa; }
+.acciones { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.acciones form { display: inline; }
+.oscuro { background: #151a24; color: #f0f0f0; }
+.oscuro main { background: #252d3b; }
+.oscuro th { background: #38465b; }
+.oscuro td { border-color: #566176; }

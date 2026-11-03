@@ -1,0 +1,9 @@
+CategorySeeder 
+Izena eta Deskribapena
+
+Elektronika - Gailu elektronikoak
+Liburuak - Liburu eta aldizkariak
+Arropa - Jantziak eta osagarriak
+Etxeko tresnak - Etxerako produktuak
+Kirolak - Kirol materialak
+Musika - Instrumentuak eta diskoak
