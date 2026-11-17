@@ -1,0 +1,59 @@
+services:
+ app_web:
+  build:
+   context: ./web
+   dockerfile: Dockerfile
+  container_name: daw_app_web
+  ports:
+   - "8080:80"
+  volumes:
+   - ./web/src:/var/www/html
+  environment:
+   - DB_HOST=daw_db_mariadb
+   - DB_NAME=daw_tienda
+   - DB_USER=usuario_daw
+  secrets:
+   - db_password
+  depends_on:
+   db_mariadb:
+    condition: service_healthy
+  restart: unless-stopped
+  networks:
+   - red_lamp_daw
+
+ db_mariadb:
+  image: mariadb:11.4
+  container_name: daw_db_mariadb
+  environment:
+   MARIADB_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+   MARIADB_DATABASE: daw_tienda
+   MARIADB_USER: usuario_daw
+   MARIADB_PASSWORD_FILE: /run/secrets/db_password
+  volumes:
+   - datos_db_persistentes:/var/lib/mysql
+   - ./mariadb/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+  secrets:
+   - db_root_password
+   - db_password
+  healthcheck:
+   test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+   interval: 10s
+   timeout: 5s
+   retries: 5
+   start_period: 15s
+  restart: unless-stopped
+  networks:
+   - red_lamp_daw
+
+networks:
+  red_lamp_daw:
+   driver: bridge
+
+volumes:
+  datos_db_persistentes:
+   
+secrets:
+  db_root_password:
+   file: ./secrets/db_root_password.txt
+  db_password:
+   file: ./secrets/db_password.txt
